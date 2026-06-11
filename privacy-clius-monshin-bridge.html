@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー — CLIUS問診ブリッジ</title>
+  <style>
+    :root {
+      --ink: #1f2937; --sub: #6b7280; --line: #e5e7eb; --bg: #f5f7fa;
+      --card: #ffffff; --blue: #0a8acb; --green: #2e7d32; --teal: #0d9488;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px 64px; }
+    header.site {
+      background: linear-gradient(120deg, #0d9488 0%, #0a8acb 100%);
+      color: #fff; padding: 28px 16px; text-align: center;
+    }
+    header.site .inner { max-width: 720px; margin: 0 auto; }
+    header.site h1 { margin: 0; font-size: 21px; letter-spacing: .03em; }
+    header.site p { margin: 6px 0 0; font-size: 13px; opacity: .92; }
+    .updated { color: var(--sub); font-size: 12px; margin: 18px 2px 8px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 22px 24px; margin: 14px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    }
+    .lead { margin: 0 0 6px; }
+    h2.section {
+      font-size: 15px; margin: 22px 0 8px; color: var(--teal);
+      border-left: 4px solid var(--teal); padding-left: 8px;
+    }
+    h2.section:first-of-type { margin-top: 4px; }
+    ul.bullets { margin: 0; padding-left: 1.2em; }
+    ul.bullets li { margin: 5px 0; }
+    code { background: #eef2f7; padding: 1px 5px; border-radius: 4px; font-size: 92%; }
+    .ok { color: var(--green); font-weight: 700; }
+    .no { color: #b91c1c; font-weight: 700; }
+    .note {
+      background: #ecfdf5; border: 1px solid #c7ece0; border-radius: 10px;
+      padding: 10px 14px; font-size: 13px; color: #134e48; margin-top: 16px;
+    }
+    footer.site { text-align: center; color: var(--sub); font-size: 12px; padding: 8px 16px 0; }
+    footer.site .hr { height: 1px; background: var(--line); margin: 24px 0 16px; }
+    a { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="inner">
+      <h1>プライバシーポリシー</h1>
+      <p>CLIUS問診ブリッジ（medibot問診→CLIUS自動転記・社内ツール）</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="updated">最終更新: 2026年6月11日</div>
+
+    <article class="card">
+      <p class="lead">
+        CLIUS問診ブリッジ（以下「本拡張」）は、KAIZEN Clinic OS が提供する<strong>社内専用</strong>の
+        Chrome 拡張機能です。medibot で患者が回答した問診を、CLIUS 電子カルテの当日カルテ（SOAP）へ
+        自動転記し、問診の手入力をなくすことを唯一の目的とします。本ポリシーは、本拡張が扱う情報の範囲と
+        取り扱い方針を説明します。
+      </p>
+
+      <h2 class="section">扱う情報</h2>
+      <ul class="bullets">
+        <li><strong>CLIUS 認証トークン</strong>: CLIUS（<code>web.clius.jp</code> / <code>api.clius.jp</code>）の利用中に送信される認証情報を端末内で取得し、問診の読み取り・転記に用います。端末外へは送信しません。</li>
+        <li><strong>問診データ・患者情報</strong>: medibot（<code>medibot.cloud</code>）の問診回答・氏名・生年月日・診察券番号を、CLIUS の正しい患者カルテへ転記する目的で<strong>端末内でのみ</strong>扱います。</li>
+        <li><strong>接続設定</strong>: 対象 bot ID・拠点ID 等の設定を端末内のストレージに保存します。</li>
+      </ul>
+
+      <h2 class="section">送信先（<span class="ok">医療機関が利用する2サービスのみ</span>）</h2>
+      <ul class="bullets">
+        <li>本拡張の通信先は <strong>medibot（<code>medibot.cloud</code>）と CLIUS（<code>web.clius.jp</code> / <code>api.clius.jp</code>）のみ</strong>です。</li>
+        <li>これら以外の外部サーバー・第三者サービスへの送信は<span class="no">一切行いません</span>。集計・分析サーバーへも送りません。</li>
+      </ul>
+
+      <h2 class="section">しないこと</h2>
+      <ul class="bullets">
+        <li>データの<span class="no">販売・譲渡・広告利用・信用調査</span>等への利用はしません。</li>
+        <li>本来の用途（問診の転記）以外の目的に利用しません。</li>
+      </ul>
+
+      <h2 class="section">安全設計</h2>
+      <ul class="bullets">
+        <li><strong>別人書き込み防止</strong>: 受付患者と問診を<strong>氏名＋生年月日が一致</strong>したときのみ転記します。</li>
+        <li>既存のカルテ内容を消さず末尾に追記し、二重転記は防止します（冪等）。</li>
+      </ul>
+
+      <h2 class="section">データの保存・停止</h2>
+      <ul class="bullets">
+        <li>設定および一時的なトークンは Chrome のローカルストレージ内に保存され、端末外には保存されません。拡張機能を削除すると、これらも削除されます。</li>
+        <li>管理コンソールからの設定配信（<code>dryRun=true</code>）で書き込みを即時に停止できます。</li>
+      </ul>
+
+      <div class="note">
+        ご不明点・ご要望は、社内の KAIZEN 担当（Slack <code>#clinic-os</code>）までご連絡ください。
+        本ページは社内向け（検索エンジン非掲載）です。
+      </div>
+    </article>
+
+    <footer class="site">
+      <div class="hr"></div>
+      KAIZEN Clinic OS ・ 社内向け
+    </footer>
+  </div>
+</body>
+</html>
