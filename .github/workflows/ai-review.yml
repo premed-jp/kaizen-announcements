@@ -15,6 +15,14 @@ on:
 
 jobs:
   ai-review:
+    # 呼び出し役ジョブ自身に PR ガードを置く（pagos.yml と同型）。
+    # これが無いと、rollout が本ファイルを各 repo の main へ push したとき、PR コンテキスト
+    # 無しで reusable が呼ばれ「No jobs were run（= run 失敗）」となり、購読者（org オーナー）に
+    # 大量の失敗メールが飛ぶ。ジョブ自体を if で skip すれば run は中立（skipped）扱いになり
+    # 失敗メールは出ない。フォーク PR（secrets が渡らずコメント不可）もここで安全に skip する。
+    if: >-
+      github.event_name == 'pull_request' &&
+      github.event.pull_request.head.repo.full_name == github.repository
     uses: premed-jp/kaizen-clinic-os/.github/workflows/ai-review-reusable.yml@main
     permissions:
       contents: read
