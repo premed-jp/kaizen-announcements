@@ -1,0 +1,25 @@
+name: AI Review (pre-merge)
+
+# 全 premed-jp リポジトリ共通の「呼び出し役」。実体は kaizen-clinic-os の
+# ai-review-reusable.yml（workflow_call）。PR の open/更新ごとに Claude + Codex が
+# diff をレビューし、結果を 1 つのスティッキーコメントに集約して PR に投稿する。
+#
+# このファイルは全 repo で同一内容。配布は scripts/ai-review/rollout-org.sh で一括する。
+# 必要な repo シークレット（Free org のため org 不可・各 repo に配布）:
+#   ANTHROPIC_API_KEY / PAGOS_APP_PRIVATE_KEY（pagos の set-repo-secrets.sh が配布済み・共用）
+#   OPENAI_API_KEY（scripts/ai-review/set-repo-secret.sh で配布）
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ai-review:
+    uses: premed-jp/kaizen-clinic-os/.github/workflows/ai-review-reusable.yml@main
+    permissions:
+      contents: read
+      pull-requests: write
+    secrets:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      AI_REVIEW_APP_PRIVATE_KEY: ${{ secrets.PAGOS_APP_PRIVATE_KEY }}
