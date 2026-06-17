@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>プライバシーポリシー — KAIZEN Clinic OS 拡張機能（共通）</title>
+  <title>プライバシーポリシー — KAIZEN Clinic OS 拡張機能（共通） / Privacy Policy</title>
   <style>
     :root {
       --ink: #1f2937; --sub: #6b7280; --line: #e5e7eb; --bg: #f5f7fa;
@@ -26,17 +26,21 @@
     header.site .inner { max-width: 720px; margin: 0 auto; }
     header.site h1 { margin: 0; font-size: 21px; letter-spacing: .03em; }
     header.site p { margin: 6px 0 0; font-size: 13px; opacity: .92; }
-    .updated { color: var(--sub); font-size: 12px; margin: 18px 2px 8px; }
+    .langnav { text-align: center; margin: 16px 0 2px; font-size: 13px; }
+    .langnav a { color: var(--blue); text-decoration: none; font-weight: 700; }
+    .langnav span { color: var(--sub); margin: 0 8px; }
+    .updated { color: var(--sub); font-size: 12px; margin: 14px 2px 8px; }
     .card {
       background: var(--card); border: 1px solid var(--line); border-radius: 14px;
       padding: 22px 24px; margin: 14px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04);
     }
     .lead { margin: 0 0 6px; }
-    h2.section {
+    h2.lang { font-size: 16px; margin: 6px 0 4px; color: var(--ink); }
+    h3.section {
       font-size: 15px; margin: 22px 0 8px; color: var(--teal);
       border-left: 4px solid var(--teal); padding-left: 8px;
     }
-    h2.section:first-of-type { margin-top: 4px; }
+    h3.section:first-of-type { margin-top: 4px; }
     ul.bullets { margin: 0; padding-left: 1.2em; }
     ul.bullets li { margin: 5px 0; }
     .ok { color: var(--green); font-weight: 700; }
@@ -53,24 +57,26 @@
 <body>
   <header class="site">
     <div class="inner">
-      <h1>プライバシーポリシー</h1>
-      <p>KAIZEN Clinic OS 拡張機能（共通）</p>
+      <h1>プライバシーポリシー / Privacy Policy</h1>
+      <p>KAIZEN Clinic OS 拡張機能（共通） / KAIZEN Clinic OS Chrome Extensions (common)</p>
     </div>
   </header>
 
   <div class="wrap">
-    <div class="updated">最終更新: 2026年6月17日</div>
+    <div class="langnav"><a href="#ja">日本語</a><span>/</span><a href="#en">English</a></div>
+    <div class="updated">最終更新 / Last updated: 2026-06-17</div>
 
-    <article class="card">
+    <!-- ===================== 日本語 ===================== -->
+    <article class="card" id="ja">
+      <h2 class="lang">日本語</h2>
       <p class="lead">
         本ポリシーは、<strong>KAIZEN Clinic OS</strong> が提供する各 Chrome 拡張機能
         （医院スタッフ向け・社内専用／限定公開）に<strong>共通して</strong>適用されます。
         各拡張は、予約・電子カルテ・受付・会計などの日常業務を、利用者ご自身がログインしている
-        院内システム上で支援することを目的とします。本ポリシーは、これらの拡張が扱う情報の範囲と
-        取り扱い方針を説明します。
+        院内システム上で支援することを目的とします。
       </p>
 
-      <h2 class="section">基本方針</h2>
+      <h3 class="section">基本方針</h3>
       <ul class="bullets">
         <li>各拡張は、<strong>利用者ご自身のログインセッション（Cookie）の範囲内</strong>で動作します。
             業務に必要な情報のみを、その医院のシステム（medibot・CLIUS・ORCA 等）から取得し、
@@ -79,7 +85,7 @@
         <li>外部の解析サービス・広告・トラッキングは<strong>一切使用しません</strong>。</li>
       </ul>
 
-      <h2 class="section">取り扱う情報</h2>
+      <h3 class="section">取り扱う情報</h3>
       <ul class="bullets">
         <li>業務に必要な範囲で、患者に関する情報（氏名・診察券番号・予約内容・問診内容・保険等）を
             <strong>一時的に</strong>取り扱う場合があります。これらは画面への表示や、その業務の操作
@@ -88,7 +94,7 @@
             必要な設定値（医院IDなど）も、実行時に画面から取得し保存しません。</li>
       </ul>
 
-      <h2 class="section">情報の保存について</h2>
+      <h3 class="section">情報の保存について</h3>
       <ul class="bullets">
         <li>多くの拡張は情報を保存しません（その場限りの利用）。</li>
         <li>業務改善を目的とする一部の拡張（例：操作のムダを可視化するツール）は、
@@ -98,20 +104,20 @@
             記録は原則 <strong>90 日</strong>で削除し、アクセスは管理者に限定します。</li>
       </ul>
 
-      <h2 class="section">第三者提供・販売</h2>
+      <h3 class="section">第三者提供・販売</h3>
       <ul class="bullets">
         <li>取り扱う情報を、第三者に<span class="no">販売・譲渡しません</span>。</li>
         <li>各拡張の単一目的と<strong>無関係の用途</strong>に使用・転送しません。</li>
         <li>信用力の判断や融資の目的に使用・転送しません。</li>
       </ul>
 
-      <h2 class="section">導入・停止の管理</h2>
+      <h3 class="section">導入・停止の管理</h3>
       <ul class="bullets">
         <li>各拡張は Google 管理コンソールからの配信により導入・停止します。
             不要になった拡張は管理コンソールから配信を止めることで利用を停止できます。</li>
       </ul>
 
-      <h2 class="section">改定</h2>
+      <h3 class="section">改定</h3>
       <ul class="bullets">
         <li>本ポリシーは必要に応じて改定します。重要な変更がある場合は本ページで告知します。</li>
       </ul>
@@ -123,9 +129,75 @@
       </div>
     </article>
 
+    <!-- ===================== English ===================== -->
+    <article class="card" id="en">
+      <h2 class="lang">English</h2>
+      <p class="lead">
+        This Privacy Policy applies <strong>commonly</strong> to the Chrome extensions provided by
+        <strong>KAIZEN Clinic OS</strong> (for clinic staff; internal use / unlisted distribution).
+        Each extension is designed to assist daily clinic operations — reservations, electronic medical
+        records, reception, accounting — within the systems the user is already logged in to.
+      </p>
+
+      <h3 class="section">Core principles</h3>
+      <ul class="bullets">
+        <li>Each extension operates <strong>only within the user's own logged-in session (cookies)</strong>.
+            It retrieves only the information necessary for the task from the clinic's own systems
+            (medibot, CLIUS, ORCA, etc.) and uses it solely for on-screen display, the relevant operation,
+            and linking between the clinic's own systems.</li>
+        <li><strong>No patient information is sent to or collected by any third-party server</strong>,
+            including the extension's provider.</li>
+        <li>No external analytics, advertising, or tracking is used.</li>
+      </ul>
+
+      <h3 class="section">Information handled</h3>
+      <ul class="bullets">
+        <li>Within the scope necessary for the task, patient-related information (name, patient card number,
+            reservation details, medical questionnaire answers, insurance, etc.) may be handled
+            <strong>temporarily</strong>. It is used only for on-screen display and the relevant operation
+            (e.g., changing/canceling a reservation, opening a chart, copying a questionnaire).</li>
+        <li>Such information is, in principle, <strong>not stored within the extension</strong> (transient use).
+            Required settings (such as the clinic ID) are obtained at runtime and not stored.</li>
+      </ul>
+
+      <h3 class="section">Data storage</h3>
+      <ul class="bullets">
+        <li>Most extensions do not store any information (transient use only).</li>
+        <li>Some extensions intended for operational improvement (e.g., a tool that visualizes operational
+            inefficiencies) may record <strong>only non-personally-identifiable operational metadata</strong>
+            (type of action, screen category, dwell time, etc.) to an internal Data Hub. The contents of
+            entered field values, patient personal information, and screenshots are <span class="no">not recorded</span>.
+            Such records are deleted within <strong>90 days</strong> in principle, with access limited to administrators.</li>
+      </ul>
+
+      <h3 class="section">Third-party disclosure / sale</h3>
+      <ul class="bullets">
+        <li>We do <span class="no">not sell or transfer</span> the information to third parties.</li>
+        <li>We do not use or transfer it for purposes unrelated to each extension's single purpose.</li>
+        <li>We do not use or transfer it for creditworthiness or lending decisions.</li>
+      </ul>
+
+      <h3 class="section">Deployment / removal management</h3>
+      <ul class="bullets">
+        <li>Each extension is deployed and managed via the Google Admin Console; deployment can be stopped
+            there at any time.</li>
+      </ul>
+
+      <h3 class="section">Revisions</h3>
+      <ul class="bullets">
+        <li>This policy may be revised as needed. Significant changes will be announced on this page.</li>
+      </ul>
+
+      <div class="note">
+        This policy applies <strong>commonly to multiple KAIZEN Clinic OS extensions</strong>.
+        For questions or requests, please contact the internal KAIZEN team (Slack <code>#clinic-os</code>).
+        This page is intended for internal use and is not indexed by search engines.
+      </div>
+    </article>
+
     <footer class="site">
       <div class="hr"></div>
-      KAIZEN Clinic OS ・ 社内向け
+      KAIZEN Clinic OS ・ 社内向け / internal use
     </footer>
   </div>
 </body>
