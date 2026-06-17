@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー — KAIZEN Clinic OS 拡張機能（共通）</title>
+  <style>
+    :root {
+      --ink: #1f2937; --sub: #6b7280; --line: #e5e7eb; --bg: #f5f7fa;
+      --card: #ffffff; --blue: #0a8acb; --green: #2e7d32; --teal: #0d9488;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px 64px; }
+    header.site {
+      background: linear-gradient(120deg, #0d9488 0%, #0a8acb 100%);
+      color: #fff; padding: 28px 16px; text-align: center;
+    }
+    header.site .inner { max-width: 720px; margin: 0 auto; }
+    header.site h1 { margin: 0; font-size: 21px; letter-spacing: .03em; }
+    header.site p { margin: 6px 0 0; font-size: 13px; opacity: .92; }
+    .updated { color: var(--sub); font-size: 12px; margin: 18px 2px 8px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 22px 24px; margin: 14px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    }
+    .lead { margin: 0 0 6px; }
+    h2.section {
+      font-size: 15px; margin: 22px 0 8px; color: var(--teal);
+      border-left: 4px solid var(--teal); padding-left: 8px;
+    }
+    h2.section:first-of-type { margin-top: 4px; }
+    ul.bullets { margin: 0; padding-left: 1.2em; }
+    ul.bullets li { margin: 5px 0; }
+    .ok { color: var(--green); font-weight: 700; }
+    .no { color: #b91c1c; font-weight: 700; }
+    .note {
+      background: #ecfdf5; border: 1px solid #c7ece0; border-radius: 10px;
+      padding: 10px 14px; font-size: 13px; color: #134e48; margin-top: 16px;
+    }
+    footer.site { text-align: center; color: var(--sub); font-size: 12px; padding: 8px 16px 0; }
+    footer.site .hr { height: 1px; background: var(--line); margin: 24px 0 16px; }
+    a { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="inner">
+      <h1>プライバシーポリシー</h1>
+      <p>KAIZEN Clinic OS 拡張機能（共通）</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="updated">最終更新: 2026年6月17日</div>
+
+    <article class="card">
+      <p class="lead">
+        本ポリシーは、<strong>KAIZEN Clinic OS</strong> が提供する各 Chrome 拡張機能
+        （医院スタッフ向け・社内専用／限定公開）に<strong>共通して</strong>適用されます。
+        各拡張は、予約・電子カルテ・受付・会計などの日常業務を、利用者ご自身がログインしている
+        院内システム上で支援することを目的とします。本ポリシーは、これらの拡張が扱う情報の範囲と
+        取り扱い方針を説明します。
+      </p>
+
+      <h2 class="section">基本方針</h2>
+      <ul class="bullets">
+        <li>各拡張は、<strong>利用者ご自身のログインセッション（Cookie）の範囲内</strong>で動作します。
+            業務に必要な情報のみを、その医院のシステム（medibot・CLIUS・ORCA 等）から取得し、
+            画面表示・該当業務の操作・院内システム間の連携にのみ使用します。</li>
+        <li>本拡張の提供者を含む<strong>第三者のサーバーへ、患者情報を送信・収集しません</strong>。</li>
+        <li>外部の解析サービス・広告・トラッキングは<strong>一切使用しません</strong>。</li>
+      </ul>
+
+      <h2 class="section">取り扱う情報</h2>
+      <ul class="bullets">
+        <li>業務に必要な範囲で、患者に関する情報（氏名・診察券番号・予約内容・問診内容・保険等）を
+            <strong>一時的に</strong>取り扱う場合があります。これらは画面への表示や、その業務の操作
+            （例：予約の変更・削除、カルテ画面を開く、問診のコピー）にのみ使用します。</li>
+        <li>これらの情報は、原則として<strong>拡張機能内に保存しません</strong>（その場限りの利用）。
+            必要な設定値（医院IDなど）も、実行時に画面から取得し保存しません。</li>
+      </ul>
+
+      <h2 class="section">情報の保存について</h2>
+      <ul class="bullets">
+        <li>多くの拡張は情報を保存しません（その場限りの利用）。</li>
+        <li>業務改善を目的とする一部の拡張（例：操作のムダを可視化するツール）は、
+            <strong>個人を特定しない業務メタデータ</strong>（操作の種類・画面の分類・滞在時間など）のみを
+            社内の Data Hub に記録する場合があります。
+            入力欄に入力された値の中身・患者の個人情報・スクリーンショットは<span class="no">記録しません</span>。
+            記録は原則 <strong>90 日</strong>で削除し、アクセスは管理者に限定します。</li>
+      </ul>
+
+      <h2 class="section">第三者提供・販売</h2>
+      <ul class="bullets">
+        <li>取り扱う情報を、第三者に<span class="no">販売・譲渡しません</span>。</li>
+        <li>各拡張の単一目的と<strong>無関係の用途</strong>に使用・転送しません。</li>
+        <li>信用力の判断や融資の目的に使用・転送しません。</li>
+      </ul>
+
+      <h2 class="section">導入・停止の管理</h2>
+      <ul class="bullets">
+        <li>各拡張は Google 管理コンソールからの配信により導入・停止します。
+            不要になった拡張は管理コンソールから配信を止めることで利用を停止できます。</li>
+      </ul>
+
+      <h2 class="section">改定</h2>
+      <ul class="bullets">
+        <li>本ポリシーは必要に応じて改定します。重要な変更がある場合は本ページで告知します。</li>
+      </ul>
+
+      <div class="note">
+        本ポリシーは KAIZEN Clinic OS の<strong>複数の拡張機能に共通して</strong>適用されます。
+        ご不明点・ご要望は、社内の KAIZEN 担当（Slack <code>#clinic-os</code>）までご連絡ください。
+        本ページは社内向け（検索エンジン非掲載）です。
+      </div>
+    </article>
+
+    <footer class="site">
+      <div class="hr"></div>
+      KAIZEN Clinic OS ・ 社内向け
+    </footer>
+  </div>
+</body>
+</html>
