@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー — medibot チェックイン自動着色</title>
+  <style>
+    :root {
+      --ink: #1f2937; --sub: #6b7280; --line: #e5e7eb; --bg: #f5f7fa;
+      --card: #ffffff; --blue: #0a8acb; --green: #2e7d32; --teal: #0d9488;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+      color: var(--ink); background: var(--bg); line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px 64px; }
+    header.site {
+      background: linear-gradient(120deg, #0d9488 0%, #31967d 100%);
+      color: #fff; padding: 28px 16px; text-align: center;
+    }
+    header.site .inner { max-width: 720px; margin: 0 auto; }
+    header.site h1 { margin: 0; font-size: 21px; letter-spacing: .03em; }
+    header.site p { margin: 6px 0 0; font-size: 13px; opacity: .92; }
+    .updated { color: var(--sub); font-size: 12px; margin: 18px 2px 8px; }
+    .card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+      padding: 22px 24px; margin: 14px 0; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    }
+    .lead { margin: 0 0 6px; }
+    h2.section {
+      font-size: 15px; margin: 22px 0 8px; color: var(--teal);
+      border-left: 4px solid var(--teal); padding-left: 8px;
+    }
+    h2.section:first-of-type { margin-top: 4px; }
+    ul.bullets { margin: 0; padding-left: 1.2em; }
+    ul.bullets li { margin: 5px 0; }
+    .ok { color: var(--green); font-weight: 700; }
+    .no { color: #b91c1c; font-weight: 700; }
+    code { background: #eef2f6; padding: 1px 5px; border-radius: 4px; font-size: 92%; }
+    .note {
+      background: #ecfdf5; border: 1px solid #c7ece0; border-radius: 10px;
+      padding: 10px 14px; font-size: 13px; color: #134e48; margin-top: 16px;
+    }
+    footer.site { text-align: center; color: var(--sub); font-size: 12px; padding: 8px 16px 0; }
+    footer.site .hr { height: 1px; background: var(--line); margin: 24px 0 16px; }
+    a { color: var(--blue); }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="inner">
+      <h1>プライバシーポリシー</h1>
+      <p>medibot チェックイン自動着色（Chrome 拡張機能）</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="updated">最終更新: 2026年6月18日 ・ 提供者: 株式会社プレメド（premed.jp）</div>
+
+    <article class="card">
+      <p class="lead">
+        本拡張機能「medibot チェックイン自動着色」（以下「本拡張」）は、CLIUS（電子カルテ）の受付一覧で
+        患者のチェックイン（受付）を検知し、medibot（予約システム）の予約カレンダー上で、対応する予約カードの
+        色を自動で既定色（緑）に変更することを目的とします。受付スタッフが手作業で行っていた色変更の自動化が
+        唯一の用途です。本ポリシーは、本拡張が扱う情報の範囲と取り扱い方針を説明します。
+      </p>
+
+      <h2 class="section">取り扱う情報と利用方法</h2>
+      <ul class="bullets">
+        <li>本拡張は、利用者ご自身がログインしている CLIUS（<code>web.clius.jp</code>）の受付一覧から、新しく受付済みに
+          なった患者の<strong>診察券番号（ORCA患者番号）・氏名</strong>を読み取ります。</li>
+        <li>同じく利用者がログインしている medibot（<code>medibot.cloud</code>）から、当日の予約情報を取得し、
+          診察券番号が一致する予約を特定して、その予約カードの<strong>色（背景色）を緑に更新・保存</strong>します
+          （medibot 自身への更新であり、予約の日時など色以外の項目は変更しません）。</li>
+        <li>これらはすべて、医院自身が利用している CLIUS・medibot のシステム内で完結する処理です。</li>
+      </ul>
+
+      <h2 class="section">情報の保存・削除</h2>
+      <ul class="bullets">
+        <li>二重処理を防ぐため、<strong>当日に検知した診察券番号と着色結果のみ</strong>を、利用者の端末内
+          （<code>chrome.storage.local</code>）に一時的に保存します。</li>
+        <li>保存内容は<strong>当日分のみ</strong>で、<strong>日付が変わると自動的にリセット</strong>されます。
+          外部には送信しません。</li>
+      </ul>
+
+      <h2 class="section">情報の送信先</h2>
+      <ul class="bullets">
+        <li>情報のやり取りの相手は、利用者本人がログインしている <strong>CLIUS（web.clius.jp）と medibot（medibot.cloud）のみ</strong>です。</li>
+        <li>本拡張の提供者を含む<strong>第三者のサーバーへ、患者情報を送信・収集することはありません</strong>。</li>
+        <li>外部の解析サービス・広告・トラッキングは一切使用しません。</li>
+      </ul>
+
+      <h2 class="section">第三者提供・販売</h2>
+      <ul class="bullets">
+        <li>取り扱う情報を、第三者に<span class="no">販売しません</span>。</li>
+        <li>本拡張の目的と無関係な用途に<span class="no">使用・転送しません</span>。</li>
+        <li>信用調査や融資の判断に<span class="no">使用・転送しません</span>。</li>
+      </ul>
+
+      <h2 class="section">改定</h2>
+      <ul class="bullets">
+        <li>本ポリシーは必要に応じて改定します。重要な変更がある場合は本ページで告知します。</li>
+      </ul>
+
+      <div class="note">
+        ご不明点・ご要望は、KAIZEN 運営（premed.jp）までご連絡ください。本ページは社内向け（検索エンジン非掲載）です。
+      </div>
+    </article>
+
+    <footer class="site">
+      <div class="hr"></div>
+      KAIZEN Clinic OS ・ 社内向け
+    </footer>
+  </div>
+</body>
+</html>
