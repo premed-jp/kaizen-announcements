@@ -99,6 +99,41 @@
         <span class="badge">新機能</span>
         <span class="date">2026年6月18日</span>
       </div>
+      <h2>予約パネルに「ORCAで開く」ボタンを追加しました（WebORCA の患者照会をワンクリック）</h2>
+      <p class="lead">
+        予約パネルに、オレンジ色の <span class="pill" style="background:#e8730c">ORCAで開く</span> ボタンが増えました。
+        ボタンを押すと、ログイン中の WebORCA でその患者さんの患者照会画面が開きます。
+        患者番号を手で打ち込んで探す手間がなくなります。番号は <span class="pill blue">◆ CLIUSを開く</span> と同じ
+        診察券番号をそのまま使うので、追加の入力はいりません。
+      </p>
+
+      <h3 class="section">使い方</h3>
+      <ol class="steps">
+        <li>あらかじめ別タブで <b>WebORCA にログイン</b>しておきます（この機能は自動ログインはしません）</li>
+        <li>予約管理カレンダーで予約をクリックし、パネルの <span class="pill" style="background:#e8730c">ORCAで開く</span> を押します</li>
+        <li>WebORCA のタブが前に出て、その患者さんの患者照会画面が表示されます</li>
+      </ol>
+
+      <h3 class="section">ボタンの並び</h3>
+      <ul class="bullets">
+        <li><span class="pill blue">◆ CLIUSを開く</span> → <span class="pill" style="background:#e8730c">ORCAで開く</span> → <span class="pill">📋 問診をコピー</span> の順で並びます（カルテを開く2つが隣同士）</li>
+      </ul>
+
+      <div class="note">
+        💡 患者番号で照会して開くだけで、<b>「登録（保存）」は押しません</b>。番号が無い場合でも新しい患者を作ることはありません。
+        WebORCA を開いていない／未ログインのときは、番号を渡さず案内だけ表示します（誤操作が起きません）。
+        medibot と WebORCA が同じ拠点（患者番号が一致）であることが前提です。
+        この機能は拡張機能のアップデート後に表示され、各院の端末へ順次反映されます。
+      </div>
+
+      <p class="kaizen-tag">— 現場の声から KAIZEN が内製で追加した機能です。不具合・ご要望はお気軽にご連絡ください。</p>
+    </article>
+
+    <article class="card">
+      <div class="meta">
+        <span class="badge">新機能</span>
+        <span class="date">2026年6月18日</span>
+      </div>
       <h2>medibot のチャット画面から、その場で予約を「変更」「削除」できるようにしました</h2>
       <p class="lead">
         医院スタッフ向けの Chrome 拡張機能を新しく追加しました。medibot のチャット画面（予約詳細パネル）の
