@@ -7,91 +7,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>KAIZEN 拡張機能でできること（画面ガイド）</title>
   <style>
-    :root {
-      --ink: #1f2937;
-      --sub: #6b7280;
-      --line: #e5e7eb;
-      --bg: #f5f7fa;
-      --card: #ffffff;
-      --blue: #0a8acb;
-      --green: #2e7d32;
-      --amber: #b9760f;
-      --accent: #0a8acb;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
-        "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
-      color: var(--ink);
-      background: var(--bg);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-    .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 64px; }
-    header.site {
-      background: linear-gradient(120deg, #0a8acb 0%, #1aa0a0 100%);
-      color: #fff;
-      padding: 28px 16px;
-      text-align: center;
-    }
-    header.site .inner { max-width: 760px; margin: 0 auto; }
-    header.site h1 { margin: 0; font-size: 22px; letter-spacing: .04em; }
-    header.site p { margin: 6px 0 0; font-size: 13px; opacity: .92; }
-    .updated { color: var(--sub); font-size: 12px; margin: 18px 2px 8px; }
+    :root{ --ink:#1f2937; --sub:#6b7280; --line:#e5e7eb; --bg:#f5f7fa; --card:#fff; --blue:#0a8acb; --green:#2e7d32; --amber:#b9760f; }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif; color:var(--ink); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    .wrap{ max-width:820px; margin:0 auto; padding:0 16px 64px; }
+    header.site{ background:linear-gradient(120deg,#0a8acb 0%,#1aa0a0 100%); color:#fff; padding:28px 16px; text-align:center; }
+    header.site .inner{ max-width:820px; margin:0 auto; }
+    header.site h1{ margin:0; font-size:22px; letter-spacing:.04em; }
+    header.site p{ margin:6px 0 0; font-size:13px; opacity:.92; }
+    .updated{ color:var(--sub); font-size:12px; margin:18px 2px 8px; }
+    .card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:22px; margin:14px 0; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+    .card h2{ margin:0 0 10px; font-size:19px; line-height:1.5; }
+    .lead{ margin:0 0 8px; }
+    h3.section{ font-size:14px; margin:18px 0 10px; color:var(--blue); border-left:4px solid var(--blue); padding-left:8px; }
+    .note{ background:#f0f7fb; border:1px solid #d6e9f3; border-radius:10px; padding:10px 14px; font-size:13px; color:#355; margin-top:14px; }
+    .kaizen-tag{ color:var(--sub); font-size:12px; margin-top:16px; }
+    footer.site{ text-align:center; color:var(--sub); font-size:12px; padding:8px 16px 0; }
+    footer.site .hr{ height:1px; background:var(--line); margin:24px 0 16px; }
+    a{ color:var(--blue); }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 22px;
-      margin: 14px 0;
-      box-shadow: 0 1px 3px rgba(0,0,0,.04);
-    }
-    .card h2 { margin: 0 0 10px; font-size: 19px; line-height: 1.5; }
-    .lead { margin: 0 0 8px; }
-    h3.section { font-size: 14px; margin: 18px 0 10px; color: var(--blue); border-left: 4px solid var(--blue); padding-left: 8px; }
-    .note { background: #f0f7fb; border: 1px solid #d6e9f3; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #355; margin-top: 14px; }
-    .kaizen-tag { color: var(--sub); font-size: 12px; margin-top: 16px; }
-    footer.site { text-align: center; color: var(--sub); font-size: 12px; padding: 8px 16px 0; }
-    footer.site .hr { height: 1px; background: var(--line); margin: 24px 0 16px; }
-    a { color: var(--blue); }
+    .toggle-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin:4px 0 14px; }
+    .toggle-row .hint{ font-size:13px; color:var(--sub); }
+    .tgl-btn{ font-size:14px; font-weight:600; color:#fff; background:var(--green); border:none; border-radius:999px; padding:9px 16px; cursor:pointer; }
+    .tgl-btn.off{ background:var(--sub); }
+    .scr-title{ font-size:14px; font-weight:700; margin:20px 0 8px; }
+    .scr{ border:1px solid #d4d7e0; border-radius:10px; overflow:hidden; background:#fff; }
+    .scroll{ overflow-x:auto; }
 
-    /* --- 画面モック --- */
-    .toggle-row { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin: 4px 0 14px; }
-    .toggle-row .hint { font-size: 13px; color: var(--sub); }
-    .tgl-btn { font-size: 14px; font-weight: 600; color:#fff; background: var(--green); border:none; border-radius: 999px; padding: 9px 16px; cursor:pointer; }
-    .tgl-btn.off { background: var(--sub); }
-    .scr-title { font-size: 14px; font-weight: 700; margin: 18px 0 8px; display:flex; align-items:center; gap:6px; }
-    .scr { border:1px solid var(--line); border-radius: 12px; overflow:hidden; background:#fff; }
-    .scr-bar { background:#2b2f48; color:#fff; padding:8px 12px; font-size:12px; display:flex; gap:14px; align-items:center; }
-    .scr-bar b { font-weight:700; letter-spacing:.04em; }
-    .scr-bar span { opacity:.85; }
-    .trow { display:grid; grid-template-columns: 130px 1fr 64px; gap:8px; padding:9px 12px; align-items:center; border-top:1px solid var(--line); }
-    .thead { color:var(--sub); font-size:12px; border-top:none; }
-    .cell { font-size:13px; }
-    .chip { display:inline-block; font-size:11px; padding:1px 7px; border-radius:5px; line-height:1.5; }
-    .chip-resv { background:#fdeed6; color:#8a5a06; border:1px solid #efb45a; }
-    .chip-floor1 { background:#e3f3ec; color:#1b6b46; }
-    .chip-floor12 { background:#e6f1fb; color:#185fa5; }
-    .chip-tag { background:#eef6e2; color:#3b6d11; }
-    .chip-start { font-size:11px; color:#1565c0; }
-    .btn-x { display:inline-block; font-size:12px; font-weight:600; padding:6px 11px; border-radius:7px; }
-    .btn-green { background:#e3f3ec; color:#1b6b46; border:1px solid #7fcfac; }
-    .btn-amber { background:#fdeed6; color:#8a5a06; border:1px solid #efb45a; }
-    .btn-purple { background:#efedfc; color:#3c3489; border:1px solid #b3aeea; }
-    .btn-blue { background:#e6f1fb; color:#185fa5; border:1px solid #85b7eb; }
-    .alertbox { background:#fdecec; border:1px solid #f3a3a3; border-radius:8px; padding:7px 10px; font-size:12px; color:#a32d2d; }
+    /* === CLIUS === */
+    .cl-top{ background:#262a45; color:#eef; display:flex; align-items:center; gap:18px; padding:9px 14px; font-size:12px; white-space:nowrap; }
+    .cl-logo{ font-weight:700; letter-spacing:.12em; font-size:14px; color:#fff; }
+    .cl-nav{ display:flex; gap:16px; opacity:.92; }
+    .cl-right{ margin-left:auto; display:flex; align-items:center; gap:10px; }
+    .cl-badge{ background:#f1c40f; color:#5a4a00; border-radius:5px; padding:1px 7px; font-weight:700; }
+    .cl-clinic{ display:flex; align-items:center; gap:6px; }
+    .dot-on{ width:8px; height:8px; border-radius:50%; background:#37c26b; display:inline-block; }
+    .cl-sub{ display:flex; align-items:center; gap:12px; padding:8px 14px; border-bottom:1px solid var(--line); font-size:12px; background:#fafbfc; white-space:nowrap; }
+    .cl-date{ display:flex; align-items:center; gap:8px; font-weight:700; }
+    .cl-arrow{ width:22px; height:22px; border-radius:50%; background:#eef0f6; color:#5a6; display:inline-flex; align-items:center; justify-content:center; color:#5566aa; }
+    .cl-today{ border:1px solid #cdd3e0; border-radius:6px; padding:2px 10px; color:#445; }
+    .cl-pill{ background:#eef0f6; color:#445; border-radius:999px; padding:3px 11px; }
+    .cl-search{ margin-left:auto; border:1px solid #d4d7e0; border-radius:7px; padding:3px 10px; color:#9aa; min-width:120px; }
+    .cl-plus{ width:24px; height:24px; border-radius:50%; background:#2f8fd0; color:#fff; display:inline-flex; align-items:center; justify-content:center; font-weight:700; }
+    .sec-h{ background:#f0f2f7; color:#556; font-size:12px; font-weight:700; padding:6px 14px; border-bottom:1px solid var(--line); }
+    table.cl{ border-collapse:collapse; width:100%; min-width:720px; font-size:12px; }
+    table.cl th{ color:var(--sub); font-weight:500; text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); white-space:nowrap; }
+    table.cl td{ padding:7px 8px; border-bottom:1px solid #f0f1f4; white-space:nowrap; vertical-align:middle; }
+    .rdot{ width:7px; height:7px; border-radius:50%; background:#e24b4a; display:inline-block; }
+    .resv{ display:inline-block; font-size:11px; padding:1px 6px; border-radius:5px; background:#fdeed6; color:#8a5a06; border:1px solid #efb45a; margin-right:5px; }
+    .nchip{ display:inline-block; font-size:11px; padding:1px 6px; border-radius:4px; margin-right:5px; }
+    .nc-pill{ background:#dff0c2; color:#3b6d11; }
+    .nc-ninpu{ background:#f7d9e6; color:#992f5a; }
+    .nc-gan{ background:#fbe6a8; color:#7a5a00; }
+    .nc-echo{ background:#cfe6fb; color:#185fa5; }
+    .nc-shussei{ background:#d7eee2; color:#1b6b46; }
+    .nc-saiketsu{ background:#f7d9c2; color:#9a4a1d; }
+    .floor1{ display:inline-block; font-size:11px; padding:1px 7px; border-radius:4px; background:#e3f3ec; color:#1b6b46; }
+    .floor12{ display:inline-block; font-size:11px; padding:1px 7px; border-radius:4px; background:#e6f1fb; color:#185fa5; }
+    .start{ font-size:11px; color:#1565c0; }
+    .memoicon{ color:#9aa; }
+    .alertbox{ background:#fdecec; border:1px solid #f3a3a3; border-radius:8px; padding:7px 10px; font-size:12px; color:#a32d2d; }
 
-    /* 拡張で追加された部分の見せ方 */
-    .ext { position:relative; outline:2px solid var(--amber); outline-offset:2px; border-radius:6px; }
-    .bdg { display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 5px; font-size:11px; font-weight:700; border-radius:9px; background:#b9760f; color:#fff; margin-left:5px; vertical-align:middle; }
-    .root.off .ext { outline:1px dashed #c9c9c9; }
-    .root.off .bdg { display:none; }
-    .root.off .only { display:none !important; }
-    .legend { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:6px 18px; font-size:13px; }
-    .legend .n { display:inline-flex; align-items:center; justify-content:center; min-width:20px; height:20px; font-size:12px; font-weight:700; border-radius:10px; background:#fdeed6; color:#8a5a06; margin-right:6px; }
-    .legend .e { color:var(--sub); }
+    /* === medibot === */
+    .mb{ display:grid; grid-template-columns:150px 1fr; min-width:660px; }
+    .mb-side{ background:#fff; border-right:1px solid var(--line); padding:10px 0; font-size:12px; }
+    .mb-brand{ display:flex; align-items:center; gap:7px; padding:4px 14px 12px; font-weight:700; color:#1aa0a0; }
+    .mb-brand .bird{ width:18px; height:18px; border-radius:50%; background:#1aa0a0; display:inline-block; }
+    .mb-cap{ color:#9aa; font-size:10px; letter-spacing:.12em; padding:6px 14px 4px; }
+    .mb-item{ padding:6px 14px; color:#556; display:flex; align-items:center; gap:7px; }
+    .mb-item.on{ background:#eaf6f6; color:#0d7a7a; font-weight:700; border-left:3px solid #1aa0a0; }
+    .mb-main{ padding:0; }
+    .mb-top{ display:flex; align-items:center; gap:10px; padding:9px 12px; border-bottom:1px solid var(--line); font-size:12px; white-space:nowrap; }
+    .mb-clinic{ border:1px solid #d4d7e0; border-radius:7px; padding:3px 10px; color:#334; font-weight:700; }
+    .mb-quota{ margin-left:auto; color:#9aa; }
+    .mb-tabs{ display:flex; gap:4px; padding:8px 12px 0; }
+    .mb-tab{ font-size:12px; padding:3px 12px; border:1px solid #d4d7e0; border-bottom:none; border-radius:7px 7px 0 0; color:#556; }
+    .mb-tab.on{ background:#374; background:#2f8fd0; color:#fff; border-color:#2f8fd0; }
+    .mb-day{ text-align:center; font-weight:700; font-size:13px; padding:6px; }
+    .cal{ display:grid; grid-template-columns:34px repeat(4,1fr); font-size:11px; }
+    .cal .ch{ background:#f0f2f7; color:#556; font-weight:700; text-align:center; padding:5px 2px; border:1px solid var(--line); }
+    .cal .hr{ color:#9aa; text-align:center; padding:4px 2px; border:1px solid #f0f1f4; }
+    .cal .cellc{ border:1px solid #f0f1f4; padding:3px; vertical-align:top; }
+    .appt{ border-radius:5px; padding:3px 5px; font-size:10.5px; line-height:1.35; margin-bottom:3px; }
+    .ap-green{ background:#dff0e8; color:#1b6b46; border:1px solid #9cd3b6; }
+    .ap-blue{ background:#dbe9fb; color:#1d4f93; border:1px solid #9bbdef; }
+    .ap-purple{ background:#e7e2f7; color:#473a93; border:1px solid #b8aee6; }
+    .mb-panel{ border:1px solid #d4d7e0; border-radius:9px; margin:10px 12px; padding:11px; }
+    .btn-x{ display:inline-block; font-size:12px; font-weight:600; padding:6px 11px; border-radius:7px; }
+    .btn-green{ background:#e3f3ec; color:#1b6b46; border:1px solid #7fcfac; }
+    .btn-amber{ background:#fdeed6; color:#8a5a06; border:1px solid #efb45a; }
+    .btn-purple{ background:#efedfc; color:#3c3489; border:1px solid #b3aeea; }
+    .btn-blue{ background:#e6f1fb; color:#185fa5; border:1px solid #85b7eb; }
+
+    /* 拡張で追加された部分 */
+    .ext{ position:relative; outline:2px solid var(--amber); outline-offset:2px; border-radius:6px; }
+    .bdg{ display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 5px; font-size:11px; font-weight:700; border-radius:9px; background:#b9760f; color:#fff; margin-left:5px; vertical-align:middle; }
+    .root.off .ext{ outline:1px dashed #c9c9c9; }
+    .root.off .bdg{ display:none; }
+    .root.off .only{ display:none !important; }
+    .legend{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:6px 18px; font-size:13px; }
+    .legend .n{ display:inline-flex; align-items:center; justify-content:center; min-width:20px; height:20px; font-size:12px; font-weight:700; border-radius:10px; background:#fdeed6; color:#8a5a06; margin-right:6px; }
+    .legend .e{ color:var(--sub); }
   </style>
 </head>
 <body>
@@ -110,7 +126,7 @@
       <p class="lead">
         CLIUS と medibot の画面に、KAIZEN の Chrome 拡張がいくつかの便利機能を追加しています。
         下のボタンで <b>拡張あり / なし</b> を切り替えると、<b>どこが拡張で増えた部分か</b>（オレンジの枠＋番号）がひと目で分かります。
-        ※画面は説明用の見本で、患者名はすべてダミーです。
+        ※画面は実際の見た目に寄せた説明用の見本で、患者名はすべてダミーです。
       </p>
 
       <div class="root" id="root">
@@ -121,25 +137,67 @@
 
         <div class="scr-title">🗒️ CLIUS 受付一覧</div>
         <div class="scr">
-          <div class="scr-bar"><b>CLIUS</b><span>2026/06/20(土)</span><span>ORCA送信済 : 39</span></div>
-          <div class="trow thead"><span>受付</span><span>氏名 / メモ</span><span>フロア</span></div>
-          <div class="trow">
-            <span class="cell"><span class="ext only" style="display:inline-block"><span class="chip chip-resv">予約09:00</span></span> 08:56<span class="bdg">1</span></span>
-            <span class="cell">見本 花子　<span class="ext only chip-start" style="display:inline-block">⏱診察開始 09:14<span class="bdg">3</span></span></span>
-            <span><span class="ext only chip chip-floor1" style="display:inline-block">1階<span class="bdg">2</span></span></span>
+          <div class="cl-top">
+            <span class="cl-logo">◆ CLIUS</span>
+            <span class="cl-nav"><span>オン資</span><span>セット</span><span>予定</span><span>予約</span><span>受付</span></span>
+            <span class="cl-right">
+              <span class="cl-badge">検査</span>
+              <span class="cl-clinic"><span class="dot-on"></span>城南レディースクリニック ｜ ID:11403</span>
+            </span>
           </div>
-          <div class="trow">
-            <span class="cell"><span class="ext only" style="display:inline-block"><span class="chip chip-resv">予約09:20</span></span> 09:10</span>
-            <span class="cell">見本 桃子　<span class="chip chip-tag">ピル</span></span>
-            <span><span class="ext only chip chip-floor12" style="display:inline-block">12階</span></span>
+          <div class="cl-sub">
+            <span class="cl-date"><span class="cl-arrow">‹</span>2026/06/20(土)<span class="cl-arrow">›</span><span class="cl-today">本日</span></span>
+            <span class="cl-pill">受付 : 0</span><span class="cl-pill">診察待 : 0</span><span class="cl-pill">診察終了 : 0</span><span class="cl-pill">ORCA送信済 : 39</span>
+            <span class="cl-search">🔍 患者検索</span><span class="cl-plus">＋</span>
           </div>
-          <div class="trow">
-            <span class="cell"><span class="ext only" style="display:inline-block"><span class="chip chip-resv">予約09:20</span></span> 09:13</span>
-            <span class="cell">見本 さくら　<span class="chip chip-tag">妊婦</span></span>
-            <span><span class="ext only chip chip-floor12" style="display:inline-block">12階</span></span>
+          <div class="sec-h">ORCA送信済</div>
+          <div class="scroll">
+            <table class="cl">
+              <thead><tr>
+                <th></th><th>受付</th><th>患者ID</th><th>氏名</th><th>カナ</th><th>年齢</th><th>メモ</th><th>フロア</th><th>担当医</th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td><span class="rdot"></span></td>
+                  <td><span class="ext only" style="display:inline-block"><span class="resv">予約09:00</span></span>08:56<span class="bdg">1</span></td>
+                  <td>0001503</td>
+                  <td><span class="nchip nc-echo">エコー</span>見本 花子　<span class="ext only start" style="display:inline-block">⏱開始09:14<span class="bdg">3</span></span></td>
+                  <td>ハナコ</td><td>44</td><td class="memoicon">🗎</td>
+                  <td><span class="ext only floor1" style="display:inline-block">1階<span class="bdg">2</span></span></td>
+                  <td>三村 貴志</td>
+                </tr>
+                <tr>
+                  <td><span class="rdot"></span></td>
+                  <td><span class="ext only" style="display:inline-block"><span class="resv">予約09:20</span></span>09:10</td>
+                  <td>0001852</td>
+                  <td><span class="nchip nc-pill">ピル</span>見本 桃子</td>
+                  <td>モモコ</td><td>33</td><td class="memoicon">🗎</td>
+                  <td><span class="ext only floor12" style="display:inline-block">12階</span></td>
+                  <td>三村 貴志</td>
+                </tr>
+                <tr>
+                  <td><span class="rdot"></span></td>
+                  <td><span class="ext only" style="display:inline-block"><span class="resv">予約09:20</span></span>09:13</td>
+                  <td>0001393</td>
+                  <td><span class="nchip nc-ninpu">妊婦</span>見本 さくら</td>
+                  <td>サクラ</td><td>31</td><td class="memoicon">🗎</td>
+                  <td><span class="ext only floor12" style="display:inline-block">12階</span></td>
+                  <td>大村 涼子</td>
+                </tr>
+                <tr>
+                  <td><span class="rdot"></span></td>
+                  <td><span class="ext only" style="display:inline-block"><span class="resv">予約10:00</span></span>10:01</td>
+                  <td>0000571</td>
+                  <td><span class="nchip nc-gan">区がん</span>見本 ともこ</td>
+                  <td>トモコ</td><td>52</td><td class="memoicon">🗎</td>
+                  <td><span class="ext only floor1" style="display:inline-block">1階</span></td>
+                  <td>大村 涼子</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+          <div class="ext only" style="margin:10px"><div class="alertbox">⏰ 見本 ともこ（予約時刻を40分超過・未打刻）<span class="bdg">4</span></div></div>
         </div>
-        <div class="ext only" style="margin-top:10px"><div class="alertbox">⏰ 見本 ともこ（予約時刻を40分超過・未打刻）<span class="bdg">4</span></div></div>
 
         <div class="scr-title">📄 CLIUS カルテ</div>
         <div class="scr" style="padding:14px">
@@ -153,21 +211,59 @@
           </div>
         </div>
 
-        <div class="scr-title">📅 medibot 予約画面</div>
-        <div class="scr" style="padding:14px">
-          <div style="font-size:12px;color:var(--sub)">予約詳細パネル</div>
-          <div style="font-size:13px;font-weight:700;margin-top:4px">見本 さくら 様　<span style="font-weight:400;color:var(--sub)">09:00 予約</span></div>
-          <div style="margin-top:6px"><span class="ext only btn-x btn-purple" style="display:inline-block">診察券番号 0018978<span class="bdg">8</span></span></div>
-          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-            <span class="ext only btn-x btn-blue" style="display:inline-block">◆ CLIUSを開く<span class="bdg">8</span></span>
-            <span class="ext only btn-x btn-green" style="display:inline-block">📋 問診をコピー<span class="bdg">8</span></span>
+        <div class="scr-title">📅 medibot 予約管理</div>
+        <div class="scr scroll">
+          <div class="mb">
+            <div class="mb-side">
+              <div class="mb-brand"><span class="bird"></span>Medibot</div>
+              <div class="mb-cap">DASHBOARD</div>
+              <div class="mb-item">📊 計測</div>
+              <div class="mb-item">🧩 フロー構築</div>
+              <div class="mb-cap">オペレーター</div>
+              <div class="mb-item">💬 チャット</div>
+              <div class="mb-item">👥 患者一覧</div>
+              <div class="mb-item on">📅 予約管理</div>
+              <div class="mb-item">📝 問診票確認</div>
+              <div class="mb-item">🚚 配送料管理</div>
+            </div>
+            <div class="mb-main">
+              <div class="mb-top">
+                <span>default ▾</span><span>▸</span><span class="mb-clinic">城南レディースクリニック旗の台 ▾</span>
+                <span class="mb-quota">月間送信数: 5201 / 30000</span>
+              </div>
+              <div class="mb-tabs"><span class="mb-tab">月</span><span class="mb-tab">週</span><span class="mb-tab on">日</span></div>
+              <div class="mb-day">2026年6月20日(土)</div>
+              <div class="cal">
+                <div class="ch"></div><div class="ch">診察室1</div><div class="ch">診察室2</div><div class="ch">診察室3</div><div class="ch">診察室4</div>
+                <div class="hr">9時</div>
+                <div class="cellc">
+                  <div class="appt ap-green">🟢問診済 見本 花子【ピル外来】<br>Web予約 09:00〜09:20</div>
+                  <div class="appt ap-blue">見本 桃子 09:20〜09:40</div>
+                </div>
+                <div class="cellc"><div class="appt ap-green">🟢問診済 見本 さくら【妊婦健診】09:00〜</div></div>
+                <div class="cellc"><div class="appt ap-purple">調整 09:40〜10:00</div></div>
+                <div class="cellc"><div class="appt ap-green">🟢問診済 見本 ともこ【区がん検診】</div></div>
+                <div class="hr">10時</div>
+                <div class="cellc"><div class="appt ap-green">🟢問診済 見本 梅子 10:00〜</div></div>
+                <div class="cellc"><div class="appt ap-blue">見本 菫 10:20〜</div></div>
+                <div class="cellc"><div class="appt ap-green">🟢問診済 見本 椿 10:00〜</div></div>
+                <div class="cellc"><div class="appt ap-green">🟢問診済 見本 楓 10:20〜</div></div>
+              </div>
+              <div class="mb-panel">
+                <div style="font-size:12px;color:var(--sub)">予約詳細パネル</div>
+                <div style="font-size:13px;font-weight:700;margin-top:3px">見本 さくら 様　<span style="font-weight:400;color:var(--sub)">09:00 予約・妊婦健診</span></div>
+                <div style="margin-top:6px"><span class="ext only btn-x btn-purple" style="display:inline-block">診察券番号 0018978<span class="bdg">8</span></span></div>
+                <div style="margin-top:9px;display:flex;gap:8px;flex-wrap:wrap">
+                  <span class="ext only btn-x btn-blue" style="display:inline-block">◆ CLIUSを開く<span class="bdg">8</span></span>
+                  <span class="ext only btn-x btn-amber" style="display:inline-block">🟠 ORCAで開く<span class="bdg">8</span></span>
+                  <span class="ext only btn-x btn-green" style="display:inline-block">📋 問診をコピー<span class="bdg">8</span></span>
+                </div>
+                <div class="ext only" style="margin-top:9px;font-size:11px;color:#1b6b46">↑ チェックインを検知すると、この予約カードを自動で緑にします<span class="bdg">9</span></div>
+              </div>
+            </div>
           </div>
-          <div style="margin-top:12px;font-size:12px;color:var(--sub)">予約カレンダー（診察室1）</div>
-          <div style="margin-top:6px;border-radius:7px;padding:7px 10px;font-size:12px;border:1px solid #7fcfac;background:#e3f3ec;color:#1b6b46">
-            09:00 見本 さくら <span class="ext only">— チェックイン検知で自動着色<span class="bdg">9</span></span>
-          </div>
-          <div class="ext only" style="margin-top:12px"><div style="background:#efedfc;border:1px solid #b3aeea;border-radius:8px;padding:8px 10px;font-size:12px;color:#3c3489">📢 KAIZENのお知らせ（広告バナーを非表示にして表示）<span class="bdg">10</span></div></div>
         </div>
+        <div class="ext only" style="margin-top:10px"><div style="background:#efedfc;border:1px solid #b3aeea;border-radius:8px;padding:8px 10px;font-size:12px;color:#3c3489">📢 medibotサイドバーの広告バナーを非表示にし、代わりに「KAIZENのお知らせ」を表示<span class="bdg">10</span></div></div>
       </div>
 
       <h3 class="section">番号 → 追加している拡張機能</h3>
@@ -202,13 +298,12 @@
   </div>
 
   <script>
-    (function () {
-      var root = document.getElementById('root');
-      var btn = document.getElementById('tgl');
-      if (!root || !btn) return;
-      btn.addEventListener('click', function () {
-        var off = root.classList.toggle('off');
-        btn.classList.toggle('off', off);
+    (function(){
+      var root=document.getElementById('root'), btn=document.getElementById('tgl');
+      if(!root||!btn) return;
+      btn.addEventListener('click',function(){
+        var off=root.classList.toggle('off');
+        btn.classList.toggle('off',off);
         btn.textContent = off ? '拡張機能: OFF（素のCLIUS / medibot）' : '拡張機能: ON（KAIZEN拡張あり）';
       });
     })();
