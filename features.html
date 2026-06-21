@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <!-- 検索エンジンに出さない（社内向け・URL限定共有） -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KAIZEN 拡張機能でできること（画面ガイド）</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --sub: #6b7280;
+      --line: #e5e7eb;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --blue: #0a8acb;
+      --green: #2e7d32;
+      --amber: #b9760f;
+      --accent: #0a8acb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN",
+        "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 0 16px 64px; }
+    header.site {
+      background: linear-gradient(120deg, #0a8acb 0%, #1aa0a0 100%);
+      color: #fff;
+      padding: 28px 16px;
+      text-align: center;
+    }
+    header.site .inner { max-width: 760px; margin: 0 auto; }
+    header.site h1 { margin: 0; font-size: 22px; letter-spacing: .04em; }
+    header.site p { margin: 6px 0 0; font-size: 13px; opacity: .92; }
+    .updated { color: var(--sub); font-size: 12px; margin: 18px 2px 8px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px;
+      margin: 14px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,.04);
+    }
+    .card h2 { margin: 0 0 10px; font-size: 19px; line-height: 1.5; }
+    .lead { margin: 0 0 8px; }
+    h3.section { font-size: 14px; margin: 18px 0 10px; color: var(--blue); border-left: 4px solid var(--blue); padding-left: 8px; }
+    .note { background: #f0f7fb; border: 1px solid #d6e9f3; border-radius: 10px; padding: 10px 14px; font-size: 13px; color: #355; margin-top: 14px; }
+    .kaizen-tag { color: var(--sub); font-size: 12px; margin-top: 16px; }
+    footer.site { text-align: center; color: var(--sub); font-size: 12px; padding: 8px 16px 0; }
+    footer.site .hr { height: 1px; background: var(--line); margin: 24px 0 16px; }
+    a { color: var(--blue); }
+
+    /* --- 画面モック --- */
+    .toggle-row { display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; margin: 4px 0 14px; }
+    .toggle-row .hint { font-size: 13px; color: var(--sub); }
+    .tgl-btn { font-size: 14px; font-weight: 600; color:#fff; background: var(--green); border:none; border-radius: 999px; padding: 9px 16px; cursor:pointer; }
+    .tgl-btn.off { background: var(--sub); }
+    .scr-title { font-size: 14px; font-weight: 700; margin: 18px 0 8px; display:flex; align-items:center; gap:6px; }
+    .scr { border:1px solid var(--line); border-radius: 12px; overflow:hidden; background:#fff; }
+    .scr-bar { background:#2b2f48; color:#fff; padding:8px 12px; font-size:12px; display:flex; gap:14px; align-items:center; }
+    .scr-bar b { font-weight:700; letter-spacing:.04em; }
+    .scr-bar span { opacity:.85; }
+    .trow { display:grid; grid-template-columns: 130px 1fr 64px; gap:8px; padding:9px 12px; align-items:center; border-top:1px solid var(--line); }
+    .thead { color:var(--sub); font-size:12px; border-top:none; }
+    .cell { font-size:13px; }
+    .chip { display:inline-block; font-size:11px; padding:1px 7px; border-radius:5px; line-height:1.5; }
+    .chip-resv { background:#fdeed6; color:#8a5a06; border:1px solid #efb45a; }
+    .chip-floor1 { background:#e3f3ec; color:#1b6b46; }
+    .chip-floor12 { background:#e6f1fb; color:#185fa5; }
+    .chip-tag { background:#eef6e2; color:#3b6d11; }
+    .chip-start { font-size:11px; color:#1565c0; }
+    .btn-x { display:inline-block; font-size:12px; font-weight:600; padding:6px 11px; border-radius:7px; }
+    .btn-green { background:#e3f3ec; color:#1b6b46; border:1px solid #7fcfac; }
+    .btn-amber { background:#fdeed6; color:#8a5a06; border:1px solid #efb45a; }
+    .btn-purple { background:#efedfc; color:#3c3489; border:1px solid #b3aeea; }
+    .btn-blue { background:#e6f1fb; color:#185fa5; border:1px solid #85b7eb; }
+    .alertbox { background:#fdecec; border:1px solid #f3a3a3; border-radius:8px; padding:7px 10px; font-size:12px; color:#a32d2d; }
+
+    /* 拡張で追加された部分の見せ方 */
+    .ext { position:relative; outline:2px solid var(--amber); outline-offset:2px; border-radius:6px; }
+    .bdg { display:inline-flex; align-items:center; justify-content:center; min-width:18px; height:18px; padding:0 5px; font-size:11px; font-weight:700; border-radius:9px; background:#b9760f; color:#fff; margin-left:5px; vertical-align:middle; }
+    .root.off .ext { outline:1px dashed #c9c9c9; }
+    .root.off .bdg { display:none; }
+    .root.off .only { display:none !important; }
+    .legend { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:6px 18px; font-size:13px; }
+    .legend .n { display:inline-flex; align-items:center; justify-content:center; min-width:20px; height:20px; font-size:12px; font-weight:700; border-radius:10px; background:#fdeed6; color:#8a5a06; margin-right:6px; }
+    .legend .e { color:var(--sub); }
+  </style>
+</head>
+<body>
+  <header class="site">
+    <div class="inner">
+      <h1>🧩 拡張機能でできること</h1>
+      <p>CLIUS / medibot の画面に、KAIZEN が内製で足している便利機能の一覧（画面ガイド）</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="updated">最終更新: 2026年6月21日</div>
+
+    <article class="card">
+      <h2>この拡張で、いつもの画面に何が増えている？</h2>
+      <p class="lead">
+        CLIUS と medibot の画面に、KAIZEN の Chrome 拡張がいくつかの便利機能を追加しています。
+        下のボタンで <b>拡張あり / なし</b> を切り替えると、<b>どこが拡張で増えた部分か</b>（オレンジの枠＋番号）がひと目で分かります。
+        ※画面は説明用の見本で、患者名はすべてダミーです。
+      </p>
+
+      <div class="root" id="root">
+        <div class="toggle-row">
+          <span class="hint">オレンジの枠＝拡張で追加された部分。番号は下の一覧に対応します。</span>
+          <button class="tgl-btn" id="tgl">拡張機能: ON（KAIZEN拡張あり）</button>
+        </div>
+
+        <div class="scr-title">🗒️ CLIUS 受付一覧</div>
+        <div class="scr">
+          <div class="scr-bar"><b>CLIUS</b><span>2026/06/20(土)</span><span>ORCA送信済 : 39</span></div>
+          <div class="trow thead"><span>受付</span><span>氏名 / メモ</span><span>フロア</span></div>
+          <div class="trow">
+            <span class="cell"><span class="ext only" style="display:inline-block"><span class="chip chip-resv">予約09:00</span></span> 08:56<span class="bdg">1</span></span>
+            <span class="cell">見本 花子　<span class="ext only chip-start" style="display:inline-block">⏱診察開始 09:14<span class="bdg">3</span></span></span>
+            <span><span class="ext only chip chip-floor1" style="display:inline-block">1階<span class="bdg">2</span></span></span>
+          </div>
+          <div class="trow">
+            <span class="cell"><span class="ext only" style="display:inline-block"><span class="chip chip-resv">予約09:20</span></span> 09:10</span>
+            <span class="cell">見本 桃子　<span class="chip chip-tag">ピル</span></span>
+            <span><span class="ext only chip chip-floor12" style="display:inline-block">12階</span></span>
+          </div>
+          <div class="trow">
+            <span class="cell"><span class="ext only" style="display:inline-block"><span class="chip chip-resv">予約09:20</span></span> 09:13</span>
+            <span class="cell">見本 さくら　<span class="chip chip-tag">妊婦</span></span>
+            <span><span class="ext only chip chip-floor12" style="display:inline-block">12階</span></span>
+          </div>
+        </div>
+        <div class="ext only" style="margin-top:10px"><div class="alertbox">⏰ 見本 ともこ（予約時刻を40分超過・未打刻）<span class="bdg">4</span></div></div>
+
+        <div class="scr-title">📄 CLIUS カルテ</div>
+        <div class="scr" style="padding:14px">
+          <div style="font-size:13px;font-weight:700">見本 花子　<span style="color:var(--sub);font-weight:400">44歳 / ID 0001503</span></div>
+          <div style="margin-top:8px;font-size:12px;color:var(--sub)">S) 経過良好。投薬希望。／ P) ピル処方継続。</div>
+          <div class="ext only" style="margin-top:10px"><div class="alertbox">⚠️ 処方薬に適応病名が未登録です（クリックで傷病名欄へ）<span class="bdg">5</span></div></div>
+          <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+            <span class="ext only btn-x btn-green" style="display:inline-block">💬 medibotを開く<span class="bdg">6</span></span>
+            <span class="ext only btn-x btn-amber" style="display:inline-block">🟠 ORCAで開く<span class="bdg">6</span></span>
+            <span class="ext only btn-x btn-purple" style="display:inline-block">✉ 紹介状を生成<span class="bdg">7</span></span>
+          </div>
+        </div>
+
+        <div class="scr-title">📅 medibot 予約画面</div>
+        <div class="scr" style="padding:14px">
+          <div style="font-size:12px;color:var(--sub)">予約詳細パネル</div>
+          <div style="font-size:13px;font-weight:700;margin-top:4px">見本 さくら 様　<span style="font-weight:400;color:var(--sub)">09:00 予約</span></div>
+          <div style="margin-top:6px"><span class="ext only btn-x btn-purple" style="display:inline-block">診察券番号 0018978<span class="bdg">8</span></span></div>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <span class="ext only btn-x btn-blue" style="display:inline-block">◆ CLIUSを開く<span class="bdg">8</span></span>
+            <span class="ext only btn-x btn-green" style="display:inline-block">📋 問診をコピー<span class="bdg">8</span></span>
+          </div>
+          <div style="margin-top:12px;font-size:12px;color:var(--sub)">予約カレンダー（診察室1）</div>
+          <div style="margin-top:6px;border-radius:7px;padding:7px 10px;font-size:12px;border:1px solid #7fcfac;background:#e3f3ec;color:#1b6b46">
+            09:00 見本 さくら <span class="ext only">— チェックイン検知で自動着色<span class="bdg">9</span></span>
+          </div>
+          <div class="ext only" style="margin-top:12px"><div style="background:#efedfc;border:1px solid #b3aeea;border-radius:8px;padding:8px 10px;font-size:12px;color:#3c3489">📢 KAIZENのお知らせ（広告バナーを非表示にして表示）<span class="bdg">10</span></div></div>
+        </div>
+      </div>
+
+      <h3 class="section">番号 → 追加している拡張機能</h3>
+      <div class="legend">
+        <div><span class="n">1</span>予約時刻の表示<span class="e"> — 診察開始時刻メモ ／ 来院フロア表示</span></div>
+        <div><span class="n">2</span>来院フロア(1階/12階)<span class="e"> — 来院フロア表示</span></div>
+        <div><span class="n">3</span>診察開始の打刻メモ<span class="e"> — 診察開始時刻メモ</span></div>
+        <div><span class="n">4</span>打刻忘れ・予約超過の警告<span class="e"> — 診察開始時刻メモ</span></div>
+        <div><span class="n">5</span>適応病名アラート<span class="e"> — レセプトQAガード</span></div>
+        <div><span class="n">6</span>medibot / ORCA をワンクリックで開く<span class="e"> — CLIUS→medibot 患者ジャンプ</span></div>
+        <div><span class="n">7</span>紹介状の自動生成<span class="e"> — 紹介状アシスタント</span></div>
+        <div><span class="n">8</span>CLIUSを開く / 問診コピー / 診察券番号<span class="e"> — medibot→CLIUS・ORCA ジャンプ</span></div>
+        <div><span class="n">9</span>チェックインで予約カードを自動着色<span class="e"> — medibot チェックイン自動着色</span></div>
+        <div><span class="n">10</span>広告非表示＋お知らせ導線<span class="e"> — KAIZEN medibot 強化</span></div>
+      </div>
+
+      <div class="note">
+        💡 これらはすべて「読み取り中心・外部送信なし」の安全な拡張で、CLIUS / medibot 本体の動きには手を加えません。
+        院ごとに配布状況が異なるため、画面に出ない機能はその院でまだ未配布の場合があります。
+      </div>
+      <p class="kaizen-tag">— 現場の声から KAIZEN が内製で追加した機能です。不具合・ご要望はお気軽にご連絡ください。</p>
+    </article>
+
+    <footer class="site">
+      <div class="hr"></div>
+      KAIZEN Clinic OS ・ 社内向けお知らせ
+      <div style="margin-top:6px;font-size:12px;">
+        <a href="index.html">お知らせ一覧へ</a> ・
+        <a href="privacy.html">プライバシーポリシー（Chrome拡張機能 共通）</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.getElementById('root');
+      var btn = document.getElementById('tgl');
+      if (!root || !btn) return;
+      btn.addEventListener('click', function () {
+        var off = root.classList.toggle('off');
+        btn.classList.toggle('off', off);
+        btn.textContent = off ? '拡張機能: OFF（素のCLIUS / medibot）' : '拡張機能: ON（KAIZEN拡張あり）';
+      });
+    })();
+  </script>
+</body>
+</html>
